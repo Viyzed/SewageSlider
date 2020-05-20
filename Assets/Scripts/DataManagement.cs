@@ -27,7 +27,7 @@ public class DataManagement : MonoBehaviour {
     public void SaveData() {
 
         BinaryFormatter binForm = new BinaryFormatter();
-        FileStream file = new FileStream(Application.persistentDataPath + "/gameInfo.dat", FileMode.Create);
+        FileStream file = File.Create(Application.persistentDataPath + "/gameInfo.dat");
         GameData data = new GameData();
         data.highScore = this.highScore;
         binForm.Serialize(file, data);
@@ -39,7 +39,7 @@ public class DataManagement : MonoBehaviour {
 
         if(File.Exists(Application.persistentDataPath + "/gameInfo.dat")) {
             BinaryFormatter binForm = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "gameInfo.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/gameInfo.dat", FileMode.Open);
             GameData data = (GameData)binForm.Deserialize(file);
             file.Close();
             this.highScore = data.highScore;

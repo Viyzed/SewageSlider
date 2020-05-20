@@ -14,6 +14,7 @@ public class PlayerMove_Demo: MonoBehaviour {
     public int playerJumpPower = 1500;
     private float moveX;
     public bool isGrounded;
+    public float extraHeightText = 0.5f;
 
     // Update is called once per frame
     void Update() {
@@ -64,7 +65,6 @@ public class PlayerMove_Demo: MonoBehaviour {
     }
 
     void PlayerRaycast() {
-        float extraHeightText = 0.5f;
         RaycastHit2D hit = Physics2D.BoxCast(gameObject.GetComponent<CircleCollider2D>().bounds.center, gameObject.GetComponent<CircleCollider2D>().bounds.size, 0f, Vector2.down, extraHeightText, groundLayerMask);
         Color rayColour;
         if(hit.collider != null) {

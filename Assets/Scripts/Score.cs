@@ -13,6 +13,13 @@ public class Score : MonoBehaviour {
     public GameObject scoreUi;
     public bool finished = false;
 
+    void Start() {
+
+        //Load Highscore
+        DataManagement.dataManagement.LoadData();
+
+    }
+
     // Update is called once per frame
     void Update() {
 
@@ -26,28 +33,30 @@ public class Score : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D trig) {
+
         if(trig.gameObject.tag == "Finish") {
-            TallyScore();
             finished = true;
+            score += (int)timeLeft * 10;
+            StoreScore();
+
         }
         
         if(trig.gameObject.tag == "Coin") {
+
             score += 100;
             Destroy(trig.gameObject);
+
         }
 
     }
 
-    void TallyScore() {
-        if (!finished) {
-            score += (int)timeLeft * 10;
-        }
-        else {
-            UnityEngine.Debug.Log("Highscore: " + DataManagement.dataManagement.highScore);
-            DataManagement.dataManagement.highScore = score;
-            DataManagement.dataManagement.SaveData();
-            UnityEngine.Debug.Log("New Highscore: " + DataManagement.dataManagement.highScore);
-        }
+    void StoreScore() {
+        
+        UnityEngine.Debug.Log("Highscore: " + DataManagement.dataManagement.highScore);
+        DataManagement.dataManagement.highScore = score;
+        DataManagement.dataManagement.SaveData();
+        UnityEngine.Debug.Log("New Highscore: " + DataManagement.dataManagement.highScore);
+        
     }
 
 }
