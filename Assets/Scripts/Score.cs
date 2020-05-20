@@ -41,7 +41,12 @@ public class Score : MonoBehaviour {
     void TallyScore() {
         if (!finished) {
             score += (int)timeLeft * 10;
-            UnityEngine.Debug.Log(score);
+        }
+        else {
+            UnityEngine.Debug.Log("Highscore: " + DataManagement.dataManagement.highScore);
+            DataManagement.dataManagement.highScore = score;
+            DataManagement.dataManagement.SaveData();
+            UnityEngine.Debug.Log("New Highscore: " + DataManagement.dataManagement.highScore);
         }
     }
 
