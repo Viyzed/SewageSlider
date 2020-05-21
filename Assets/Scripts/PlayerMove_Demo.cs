@@ -10,7 +10,6 @@ public class PlayerMove_Demo: MonoBehaviour {
     [SerializeField] private LayerMask groundLayerMask; 
 
     public int playerSpeed = 10;
-    private bool playerFacingLeft = false;
     public int playerJumpPower = 1500;
     private float moveX;
     public bool isGrounded;
@@ -35,11 +34,12 @@ public class PlayerMove_Demo: MonoBehaviour {
         //Animation
 
         //Player direction
-        if(moveX < 0.0f && playerFacingLeft == false) {
-            FlipPlayer();
+        if(moveX < 0.0f) {
+            GetComponent<SpriteRenderer>().flipX = true;
         } 
-        else if(moveX > 0.0f && playerFacingLeft == true) {
-            FlipPlayer();
+        else if(moveX > 0.0f) {
+            GetComponent<SpriteRenderer>().flipX = false;
+
         }
 
         //Physics
@@ -52,15 +52,6 @@ public class PlayerMove_Demo: MonoBehaviour {
         //Jumping code
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpPower);
         isGrounded = false;
-
-    }
-
-    void FlipPlayer() {
-
-        playerFacingLeft = !playerFacingLeft;
-        Vector2 localScale = gameObject.transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
 
     }
 

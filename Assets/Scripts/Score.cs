@@ -35,18 +35,22 @@ public class Score : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D trig) {
 
         if(trig.gameObject.tag == "Finish") {
-            finished = true;
-            score += (int)timeLeft * 10;
-            StoreScore();
-
+            if (!finished) {
+                finished = true;
+                score += (int)timeLeft * 10;
+                StoreScore();
+            }
         }
         
-        if(trig.gameObject.tag == "Coin") {
-
+        if(trig.gameObject.tag == "Coin_Gold") {
             score += 100;
             Destroy(trig.gameObject);
-
         }
+        else if(trig.gameObject.tag == "Coin_Silver") {
+            score += 50;
+            Destroy(trig.gameObject);
+        }
+
 
     }
 

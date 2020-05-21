@@ -22,7 +22,7 @@ public class GrateBehaviour : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate() {
 
-        if(scoreScript.score == 600) {
+        if(scoreScript.score > 600) {
             LowerGrate();
         }
 

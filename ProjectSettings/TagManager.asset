@@ -8,9 +8,10 @@ TagManager:
   - Ground
   - Platform
   - Spike
-  - Coin
   - Germ
   - Grate
+  - Coin_Silver
+  - Coin_Gold
   layers:
   - Default
   - TransparentFX
