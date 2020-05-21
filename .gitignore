@@ -3,4 +3,5 @@ Build/
 obj/
 Temp/
 Library/
+.vs/
 
