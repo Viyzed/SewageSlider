@@ -9,7 +9,7 @@ public class Score : MonoBehaviour {
 
     private float timeLeft = 180;
     public int score = 0;
-    private int highScore;
+    public int highScore;
     public GameObject timeLeftUi;
     public GameObject scoreUi;
     public GameObject highScoreUi;
@@ -18,8 +18,7 @@ public class Score : MonoBehaviour {
     void Start() {
 
         //Load Highscore
-        DataManagement.dataManagement.LoadData();
-        highScore = DataManagement.dataManagement.highScore;
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
 
     }
 
@@ -59,10 +58,17 @@ public class Score : MonoBehaviour {
     }
 
     void StoreScore() {
-        
-        DataManagement.dataManagement.highScore = score;
-        DataManagement.dataManagement.SaveData();
-        
+
+        if (score > highScore) {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+
+    }
+
+    void ResetHighScore() {
+
+        PlayerPrefs.DeleteKey("HighScore");
+
     }
 
 }

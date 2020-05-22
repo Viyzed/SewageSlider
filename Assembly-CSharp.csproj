@@ -64,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraSystem.cs" />
-    <Compile Include="Assets\Scripts\DataManagement.cs" />
     <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\GrateBehaviour.cs" />
     <Compile Include="Assets\Scripts\PlayerHealth_Demo.cs" />
