@@ -70,7 +70,6 @@
     <Compile Include="Assets\Scripts\PlayerHealth_Demo.cs" />
     <Compile Include="Assets\Scripts\PlayerMove_Demo.cs" />
     <Compile Include="Assets\Scripts\Score.cs" />
-    <None Include="Assets\SpritesNew\Info.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/2019.3.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

@@ -9,14 +9,17 @@ public class Score : MonoBehaviour {
 
     private float timeLeft = 180;
     public int score = 0;
+    private int highScore;
     public GameObject timeLeftUi;
     public GameObject scoreUi;
+    public GameObject highScoreUi;
     public bool finished = false;
 
     void Start() {
 
         //Load Highscore
         DataManagement.dataManagement.LoadData();
+        highScore = DataManagement.dataManagement.highScore;
 
     }
 
@@ -26,7 +29,8 @@ public class Score : MonoBehaviour {
         timeLeft -= Time.deltaTime;
         timeLeftUi.gameObject.GetComponent<Text>().text = "Time: " + (int)timeLeft;
         scoreUi.gameObject.GetComponent<Text>().text = "Score: " + score;
-        if(timeLeft < 0.1) {
+        highScoreUi.gameObject.GetComponent<Text>().text = "High: " + highScore;
+        if (timeLeft < 0.1) {
             SceneManager.LoadScene("Demo #1");
         }
         
@@ -56,10 +60,8 @@ public class Score : MonoBehaviour {
 
     void StoreScore() {
         
-        UnityEngine.Debug.Log("Highscore: " + DataManagement.dataManagement.highScore);
         DataManagement.dataManagement.highScore = score;
         DataManagement.dataManagement.SaveData();
-        UnityEngine.Debug.Log("New Highscore: " + DataManagement.dataManagement.highScore);
         
     }
 
