@@ -39,7 +39,6 @@ public class PlayerMove_Demo: MonoBehaviour {
         } 
         else if(moveX > 0.0f) {
             GetComponent<SpriteRenderer>().flipX = false;
-
         }
 
         //Physics
@@ -52,6 +51,7 @@ public class PlayerMove_Demo: MonoBehaviour {
         //Jumping code
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpPower);
         isGrounded = false;
+        //GetComponent<Rigidbody2D>().MoveRotation(0);
 
     }
 
